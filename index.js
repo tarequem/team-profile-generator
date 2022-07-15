@@ -40,7 +40,7 @@ function inquirerPrompt() {
             }
         ];
         return inquirer
-        .prompt
+        .prompt()
     }
 };
 
