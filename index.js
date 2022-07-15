@@ -2,10 +2,49 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateHTML = require("./src/generateHTML.js");
 
-//
+//declaring classes
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
+
 
 //prompts user to enter manager information
-const employeePrompt = ()
+function inquirerPrompt() {
+    function managerPrompt() {
+        const managerArray = [
+            {
+                type: "input",
+                message: "Enter the Manager name",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "Enter the Manager ID",
+                name: "id"
+            },
+            {
+                type: "input",
+                message: "Enter the Manager email",
+                name: "email"
+            },
+            {
+                type: "input",
+                message: "Enter the Manager office number",
+                name: "officeNumber"
+            },
+            {
+                type: "list",
+                message: "Select the next employee you wish to add",
+                choices: ["Manager", "Intern", "Engineer"],
+                name: "role"
+            }
+        ];
+        return inquirer
+        .prompt
+    }
+};
+
+
 
 //prompts to start on information from list of members
 //choices: [ "Choice A", new inquirer.Separator(), "choice B" ]

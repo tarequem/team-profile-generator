@@ -1,19 +1,33 @@
 const Employee = require("../lib/Employee.js");
 //test
-test("creates a new employee", () => {
-    const employee = new Employee("employee", "234", "emphub", "th@ej.com");
+test("creates a new employee object", () => {
+    const employee = new Employee("bob", "1234", "th@mail.com");
   
-    expect(employee.name).toBe("employee");
-    expect(employee.id).toBe("234");
-    expect(employee.github).toBe("emphub");
-    expect(employee.email).toBe("th@ej.com");
+    expect(employee.name).toEqual(expect.any(String));
+    expect(employee.id).toEqual(expect.any(String));
+    expect(employee.email).toEqual(expect.any(String));
 });
 
-test('Check methods for the class', () => {
-    const employee = new Employee("employee", "234", "emphub", "th@ej.com");
+test("Grabs employee name", () => {
+    const employee = new Employee("bob", "1234", "th@mail.com");
 
-    expect(employee.getName()).toBe(employee.name);
-    expect(employee.getId()).toBe(employee.id);
-    expect(employee.getEmail()).toBe(employee.email);
-    expect(employee.getRole()).toBe('Employee');
-})
+    expect(employee.name).toEqual(expect.any(String));
+});
+
+test("Grabs employee ID", () => {
+    const employee = new Employee("bob", "1234", "th@mail.com");
+
+    expect(employee.id).toEqual(expect.any(String));
+});
+
+test("Grabs employee email", () => {
+    const employee = new Employee("bob", "1234", "th@mail.com");
+
+    expect(employee.email).toEqual(expect.any(String));
+});
+
+test("Grabs employee role", () => {
+    const employee = new Employee("bob", "1234", "th@mail.com");
+
+    expect(employee.getRole()).toEqual("Employee");
+});

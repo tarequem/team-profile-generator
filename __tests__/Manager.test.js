@@ -1,20 +1,21 @@
 const Manager = require("../lib/Manager.js");
 
 test("creates a new manager", () => {
-    const manager = new Manager("manager", "234", "2343", "th@ej.com");
+    const manager = new Manager("bob", "1234", "th@mail.com", "45", "Manager");
   
-    expect(manager.name).toBe("manager");
-    expect(manager.id).toBe("234");
-    expect(manager.officeNumber).toBe("2343");
-    expect(manager.email).toBe("th@ej.com");
+    expect(manager.officeNumber).toEqual(expect.any(String));
+  });
+  
+test("Get office number", () => {
+    const manager = new Manager("bob", "1234", "th@mail.com", "45", "Manager");
+  
+    expect(manager.getOfficeNumber()).toEqual(
+        expect.stringContaining(manager.officeNumber.toString())
+    );
 });
-
-test('Check methods for the class', () => {
-    const manager = new Manager("manager", "234", "2343", "th@ej.com");
-
-    expect(manager.getName()).toBe(manager.name);
-    expect(manager.getId()).toBe(manager.id);
-    expect(manager.getEmail()).toBe(manager.email);
-    expect(manager.getOfficeNumber()).toBe(manager.officeNumber);
-    expect(manager.getRole()).toBe("Manager");
-})
+  
+test("Get role information", () => {
+    const manager = new Manager("bob", "1234", "th@mail.com", "45", "Manager");
+      
+    expect(manager.getRole()).toEqual("Manager");
+});
