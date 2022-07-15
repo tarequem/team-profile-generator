@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateHTML = require("./src/generateHTML.js");
+const teamArray = [];
 
 //declaring classes
 const Engineer = require("./lib/Engineer");
@@ -8,41 +9,105 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
 
+
 //prompts user to enter manager information
-function inquirerPrompt() {
-    function managerPrompt() {
-        const managerArray = [
+const managerPrompt = () => {
+    return inquirer
+        .prompt ([
             {
                 type: "input",
-                message: "Enter the Manager name",
-                name: "name"
+                name: "name",
+                message: "Enter the manager's name"
             },
             {
                 type: "input",
-                message: "Enter the Manager ID",
-                name: "id"
+                name: "id",
+                message: "Enter the manager's ID"
             },
             {
                 type: "input",
-                message: "Enter the Manager email",
-                name: "email"
+                name: "email",
+                message: "Enter the manager's email"
             },
             {
                 type: "input",
-                message: "Enter the Manager office number",
-                name: "officeNumber"
+                name: "officeNumber",
+                message: "Enter the manager's office number"
+            },
+        ])
+        .then((managerResponse) => {
+            const { name, id, email, officeNumber } = managerResponse;
+            const manager = new Manager(name, id, email, officeNumber);
+            teamArray.push(manager);
+        })
+}
+
+//prompts for engineer
+const engineerPrompt = () => {
+    return inquirer
+        .prompt ([
+            {
+                type: "input",
+                name: "name",
+                message: "Enter the engineer's name"
             },
             {
-                type: "list",
-                message: "Select the next employee you wish to add",
-                choices: ["Manager", "Intern", "Engineer"],
-                name: "role"
+                type: "input",
+                name: "id",
+                message: "Enter the engineer's ID"
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "Enter the engineer's email"
+            },
+            {
+                type: "input",
+                name: "github",
+                message: "Enter the engineer's GitHub username"
             }
-        ];
-        return inquirer
-        .prompt()
-    }
-};
+        ])
+        .then((engineerResponse) => {
+            const { name, id, email, github } = engineerResponse;
+            const engineer = new Engineer(name, id, email, github);
+            teamArray.push(engineer);
+            addMember();
+        })
+}
+
+//prompts for intern
+const internPrompt = () => {
+    return inquirer
+        .prompt ([
+            {
+                type: "input",
+                name: "name",
+                message: "Enter the intern's name"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "Enter the intern's ID"
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "Enter the intern's email"
+            },
+            {
+                type: "input",
+                name: "officeNumber",
+                message: "Enter the intern's school"
+            }
+        ])
+        .then((internResponse) => {
+            const { name, id, email, school } = internResponse;
+            const intern = new Intern(name, id, email, school);
+            teamArray.push(intern)
+            addMember();
+        })
+}
+
 
 
 
