@@ -14,7 +14,6 @@
   [Contact Info](#contact-info)
   
   ## Video:
-  https://youtu.be/I91CjcvKl_0
   [![Guide](https://img.youtube.com/vi/I91CjcvKl_0/0.jpg)](https://www.youtube.com/watch?v=I91CjcvKl_0)
 
   ## Description:
