@@ -1,33 +1,33 @@
-const fs = require("fs");
-const inquirer = require("inquirer");
-const generateHTML = require("./src/generateHTML.js");
+const fs = require('fs');
+const inquirer = require('inquirer');
+const generateHTML = require('./src/generateHTML.js');
 const teamArray = [];
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
-const Manager = require("./lib/Manager");
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 
 //prompts user to enter manager information
 const managerPrompt = () => {
     return inquirer
         .prompt ([
             {
-                type: "input",
-                name: "name",
+                type: 'input',
+                name: 'name',
                 message: "Enter the manager's name"
             },
             {
-                type: "input",
-                name: "id",
+                type: 'input',
+                name: 'id',
                 message: "Enter the manager's ID"
             },
             {
-                type: "input",
-                name: "email",
+                type: 'input',
+                name: 'email',
                 message: "Enter the manager's email"
             },
             {
-                type: "input",
-                name: "officeNumber",
+                type: 'input',
+                name: 'officeNumber',
                 message: "Enter the manager's office number"
             },
         ])
@@ -42,41 +42,41 @@ const addMember = () => {
     return inquirer
         .prompt ([
             {
-                type: "list",
-                name: "role",
+                type: 'list',
+                name: 'role',
                 message: "What role would you like to add",
-                choices: ["Engineer", "Intern"]
+                choices: ['Engineer', 'Intern']
             },
             {
-                type: "input",
-                name: "name",
+                type: 'input',
+                name: 'name',
                 message: "Enter the employee's name", 
             },
             {
-                type: "input",
-                name: "id",
+                type: 'input',
+                name: 'id',
                 message: "Enter the employee's ID",
             },
             {
-                type: "input",
-                name: "email",
+                type: 'input',
+                name: 'email',
                 message: "Enter the employee's email",
             },
             {
-                type: "input",
-                name: "github",
+                type: 'input',
+                name: 'github',
                 message: "Please enter the engineer's GitHub",
-                when: (input) => input.role === "Engineer"
+                when: (input) => input.role === 'Engineer'
             },
             {
-                type: "input",
-                name: "school",
+                type: 'input',
+                name: 'school',
                 message: "Please enter the intern's school",
-                when: (input) => input.role === "Intern",
+                when: (input) => input.role === 'Intern',
             },
             {
-                type: "confirm",
-                name: "confirmEmployee",
+                type: 'confirm',
+                name: 'confirmEmployee',
                 message: "Would you like to add anyone else",
                 default: false
             }
@@ -88,12 +88,12 @@ const addMember = () => {
             let { name, id, email, role, github, school, confirmEmployee } = employeeInfo; 
             let employee; 
     
-            if (role === "Engineer") {
+            if (role === 'Engineer') {
                 employee = new Engineer (name, id, email, github);
     
                 console.log(employee);
     
-            } else if (role === "Intern") {
+            } else if (role === 'Intern') {
                 employee = new Intern (name, id, email, school);
     
                 console.log(employee);
@@ -121,12 +121,12 @@ managerPrompt()
 
 //writes file to output as index.html
 const writeToFile = data => {
-    fs.writeFile("./output/index.html", data, err => {
+    fs.writeFile('./output/index.html', data, err => {
         if (err) {
             console.log(err);
             return;
         } else {
-            console.log("Page has been created");
+            console.log('Page has been created');
         }
     })
 };
