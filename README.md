@@ -12,6 +12,9 @@
   [Testing](#test)
   
   [Contact Info](#contact-info)
+  
+  ## Video:
+  [![Guide](https://img.youtube.com/vi/I91CjcvKl_0/0.jpg)](https://www.youtube.com/watch?v=I91CjcvKl_0)
 
   ## Description:
   The intended purpose for this project was to demonstrate the use of OOP and TDD with Jest. This application was designed to generate a team profile with each member's basic info using user input through the Inquirer module. This information will be displayed onto a generated HTML page.
